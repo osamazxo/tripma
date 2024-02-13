@@ -1,0 +1,31 @@
+.searchbar {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: 80px auto 0 auto;
+  box-shadow: var(--elevation-medium);
+  border: 1px solid var(--grey-200);
+  border-radius: 4px;
+}
+.searchbar :global(.input-container.from-where),
+.searchbar :global(.input-container.where-to),
+.searchbar :global(.input-container.passenger-count) {
+  & > div {
+    border-radius: 0px;
+    border: 0;
+  }
+}
+
+.searchbar :global(.input-container.where-to) {
+  & > div {
+    border-left: 1px solid var(--grey-200);
+  }
+}
+.searchbar :global(.date-picker-container > .input-container) {
+  & > div {
+    border-radius: 0px;
+    border: 0;
+    border-left: 1px solid var(--grey-200);
+    border-right: 1px solid var(--grey-200);
+  }
+}

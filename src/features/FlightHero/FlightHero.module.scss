@@ -1,0 +1,28 @@
+.hero {
+  padding: 8px 0 160px 0;
+  background-image: url("/images/world-map.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  .hero-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 190px;
+    width: 631px;
+    margin: auto;
+    margin-top: 120px;
+    line-height: 90px;
+    font-size: 96px;
+    font-weight: 800;
+    text-align: center;
+    color: transparent;
+    background-image: url("/images/gradient-b.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}

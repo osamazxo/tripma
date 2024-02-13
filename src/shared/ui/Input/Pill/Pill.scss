@@ -1,0 +1,105 @@
+.pill-container {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  .pill-label {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid var(--grey-200);
+    padding-left: 16px;
+    padding-right: 12px;
+    gap: 4px;
+    cursor: pointer;
+    color: var(--grey-900);
+    // states
+    &:focus,
+    &:focus:hover {
+      border-color: var(--purple-blue);
+    }
+    &:hover {
+      border-color: var(--grey-400);
+    }
+
+    // children
+    .label-icon {
+      width: 18px;
+      height: 18px;
+      svg path {
+        fill: var(--grey-600);
+      }
+    }
+  }
+
+  .pill-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    max-height: 0;
+    width: 240px;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 8px;
+    display: none;
+    transition: max-height 0.5s ease;
+    padding: 16px;
+    border: 1px solid var(--grey-200);
+    background-color: #fff;
+    &.opened {
+      display: flex;
+      max-height: 500px;
+    }
+    overflow: hidden;
+    box-shadow: var(--elevation-medium);
+  }
+}
+
+.pill-container.disabled {
+  .pill-label {
+    border-color: var(--grey-200);
+    cursor: default;
+    color: var(--grey-300);
+    .label-icon svg path {
+      fill: var(--grey-300);
+    }
+    &:focus,
+    &:focus:hover {
+      border-color: var(--grey-200);
+    }
+    &:hover {
+      border-color: var(--grey-200);
+    }
+  }
+}
+
+.pill-container.rounded {
+  .pill-label {
+    border-radius: 20px;
+  }
+}
+
+.pill-container.error {
+  .pill-label {
+    border-color: var(--red);
+    color: var(--red);
+  }
+  &:hover {
+    .pill-label {
+      border-color: var(--red);
+    }
+  }
+}
+
+.pill-container.applied {
+  .pill-label {
+    border-color: var(--grey-200);
+    color: var(--purple-blue);
+  }
+  &:hover {
+    .pill-label {
+      border-color: var(--grey-200);
+    }
+  }
+}

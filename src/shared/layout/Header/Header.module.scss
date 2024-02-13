@@ -1,0 +1,89 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 24px;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  & > div {
+    display: flex;
+    align-items: center;
+    & > svg {
+      display: none;
+    }
+    svg path {
+      stroke: var(--purple-blue);
+    }
+  }
+  .logo {
+    display: block;
+    height: 54px;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 16px;
+    li {
+      list-style: none;
+      padding: 10px;
+    }
+    .avatar {
+      height: 40px;
+      width: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+      padding: 0;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+    color: var(--grey-400);
+  }
+  a:hover {
+    color: var(--purple-dark);
+  }
+  a.active {
+    color: var(--purple-blue);
+  }
+}
+
+@media (max-width: 411px) {
+  .header {
+    padding: 14px 8px;
+    & > div {
+      & > svg {
+        display: block;
+      }
+    }
+    .logo {
+      height: 36px;
+    }
+    .nav {
+      padding: 0;
+      li {
+        display: none;
+      }
+      .avatar {
+        display: flex;
+        height: 32px;
+        width: 32px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .my-trips {
+    display: none;
+  }
+}

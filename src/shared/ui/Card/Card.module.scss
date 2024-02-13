@@ -1,0 +1,28 @@
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--elevation-light);
+  img {
+    height: 397px;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.text {
+  padding: 16px 24px;
+}
+.header-text {
+  display: flex;
+  justify-content: space-between;
+  color: var(--grey-600);
+}
+.title {
+  span {
+    color: var(--purple-blue);
+  }
+}
+
+.description {
+  color: var(--grey-400);
+}

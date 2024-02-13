@@ -1,0 +1,55 @@
+.date-picker-container {
+  position: relative;
+  width: fit-content;
+  .input-container {
+    width: 252px;
+  }
+  .date-picker {
+    width: 642px;
+    border: 1px solid var(--grey-200);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--elevation-medium);
+    position: absolute;
+    right: -111px;
+    top: -21px;
+    z-index: 100;
+    background-color: white;
+    & > .header {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--grey-200);
+      background-color: white;
+      .radio-group {
+        display: flex;
+        gap: 16px;
+      }
+      .field-group {
+        display: flex;
+        gap: 8px;
+      }
+    }
+    .slider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+      padding-bottom: 16px;
+      .icon {
+        cursor: pointer;
+        height: 32px;
+        width: 32px;
+        svg path {
+          stroke: var(--grey-600);
+        }
+      }
+      .icon:hover {
+        svg path {
+          stroke: var(--grey-400);
+        }
+      }
+    }
+  }
+}

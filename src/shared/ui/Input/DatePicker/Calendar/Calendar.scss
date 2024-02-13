@@ -1,0 +1,40 @@
+.calendar {
+  width: 256px;
+  padding: 16px;
+  .header {
+    margin-bottom: 8px;
+  }
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 32px;
+      width: 32px;
+      font-size: var(--font-sm);
+      color: var(--grey-900);
+    }
+    .day-name {
+      font-weight: 500;
+    }
+    .day {
+      cursor: pointer;
+      &:hover {
+        background-color: var(--purple-extra-light);
+        border-radius: 50%;
+      }
+    }
+    .day[aria-selected="true"] {
+      background-color: var(--purple-blue);
+      color: var(--purple-white);
+      border-radius: 50%;
+    }
+    .day.greyed,
+    .day.greyed[aria-selected="true"] {
+      background-color: white;
+      color: var(--grey-400);
+    }
+  }
+}
