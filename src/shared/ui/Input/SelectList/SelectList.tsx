@@ -7,7 +7,7 @@ interface SelectListProps extends HTMLAttributes<HTMLDivElement> {
   options: string[];
   value?: string | string[];
   multiSelect?: boolean;
-  getSelected: (selected: string) => void;
+  getSelected: (selected: string | string[]) => void;
   error?: boolean;
   helperText?: string;
   required?: boolean;
@@ -37,9 +37,6 @@ export const SelectList: FC<SelectListProps> = ({
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   useFocusOut(menuRef, () => setMenuOpen(false));
-  const [selected, setSelected] = useState<string | string[] | undefined>(
-    value
-  );
   const TextFieldProps = {
     error,
     helperText,
@@ -51,22 +48,20 @@ export const SelectList: FC<SelectListProps> = ({
     name,
   };
   const handleSingleSelect = (option: string) => {
-    setSelected(option);
     getSelected(option);
     setMenuOpen(false);
   };
   const handleMultiSelect = (option: string) => {
-    if (selected === undefined) {
-      setSelected([option]);
+    if (value === undefined) {
+      getSelected([option]);
     }
-    if (Array.isArray(selected)) {
-      if (selected.includes(option)) {
-        setSelected(selected.filter((item) => item !== option));
+    if (Array.isArray(value)) {
+      if (value.includes(option)) {
+        getSelected(value.filter((item) => item !== option));
       } else {
-        setSelected([...selected, option]);
+        getSelected([...value, option]);
       }
     }
-    getSelected(option);
     setMenuOpen(false);
   };
   return (
@@ -75,7 +70,7 @@ export const SelectList: FC<SelectListProps> = ({
         className="select-list-textfield"
         {...TextFieldProps}
         onClick={() => setMenuOpen((old) => !old)}
-        value={selected}
+        value={value}
         readOnly
       />
       <ul className="select-list-menu" aria-expanded={menuOpen} ref={menuRef}>
@@ -85,7 +80,7 @@ export const SelectList: FC<SelectListProps> = ({
               key={option}
               className="menu-item"
               onClick={() => handleSingleSelect(option)}
-              aria-selected={option === selected}
+              aria-selected={option === value}
             >
               {option}
             </li>

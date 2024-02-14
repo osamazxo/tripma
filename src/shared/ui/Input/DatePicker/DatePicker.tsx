@@ -42,8 +42,8 @@ const getNewSelectedDates = (
   if (selectedDates.includes(clickedDate)) {
     return selectedDates.filter((selectedDate) => selectedDate !== clickedDate);
   }
+
   if (tripType === "one-way") return [clickedDate];
-  console.log("tripType", tripType);
 
   if (selectedDates.length < 2)
     return getSortedDates([...selectedDates, clickedDate]);

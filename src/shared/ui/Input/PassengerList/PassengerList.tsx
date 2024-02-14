@@ -3,6 +3,7 @@ import { TextField } from "..";
 import { ListItem } from "./ListItem";
 import useFocusOut from "@hooks/useFocusOut";
 import "./PassengerList.scss";
+import clsx from "clsx";
 interface PassengerListProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: { adults: number; minors: number };
   getValue?: (value: { adults: number; minors: number }) => void;
@@ -18,6 +19,7 @@ interface PassengerListProps extends React.HTMLAttributes<HTMLDivElement> {
 export const PassengerList: FC<PassengerListProps> = ({
   value,
   getValue,
+  className,
   error,
   helperText,
   required,
@@ -47,9 +49,10 @@ export const PassengerList: FC<PassengerListProps> = ({
     }
   };
   return (
-    <div className="passenger-list-container">
+    <div className={clsx("passenger-list-container", className)}>
       <TextField
         {...TextFieldProps}
+        value={`${value?.adults} adults - ${value?.minors} minors`}
         readOnly
         onClick={() => setMenuOpen(true)}
       />

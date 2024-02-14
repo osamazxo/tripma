@@ -11,7 +11,7 @@
 }
 .searchbar :global(.from-where .input-container),
 .searchbar :global(.where-to .input-container),
-.searchbar :global(.input-container.passenger-count),
+.searchbar :global(.passenger-count .input-container),
 .searchbar :global(.date-picker-container > .input-container) {
   & > div {
     border-radius: 0px;
