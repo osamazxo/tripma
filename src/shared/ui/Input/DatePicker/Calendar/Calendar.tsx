@@ -60,12 +60,13 @@ export const Calendar: FC<CalendarProps> = ({
   year,
   selectedDates,
   getClickedDate,
+  className,
   ...other
 }) => {
   const daysArray = get_days_numbers(year, month);
 
   return (
-    <div className="calendar" {...other}>
+    <div className={clsx("calendar", className)} {...other}>
       <div className="header">
         <h6>{monthsNames[month - 1] + " " + year}</h6>
       </div>

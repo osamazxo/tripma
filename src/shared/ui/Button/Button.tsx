@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { FC } from "react";
 import "./Button.scss";
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "xs" | "sm" | "md" | "lg";
   variant?: "primary" | "secondary" | "tertiary";
   state?: "active" | "disabled" | "error";
@@ -13,6 +13,7 @@ export const Button: FC<ButtonProps> = ({
   children,
   icon,
   state,
+  type,
   ...other
 }) => {
   return (
@@ -20,6 +21,7 @@ export const Button: FC<ButtonProps> = ({
       className={clsx("button", variant, size, state)}
       {...other}
       disabled={state === "disabled"}
+      type={type}
     >
       <span>{children}</span>
       {icon && <span className="button-icon">{icon}</span>}

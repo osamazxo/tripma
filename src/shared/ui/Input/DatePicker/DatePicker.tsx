@@ -28,7 +28,11 @@ function getSortedDates(dates: string[]) {
     (a, b) => new Date(a).valueOf() - new Date(b).valueOf()
   );
 }
-const getNewSelectedDates = (clickedDate: string, selectedDates: string[]) => {
+const getNewSelectedDates = (
+  clickedDate: string,
+  selectedDates: string[],
+  tripType?: string
+) => {
   const clickedDateF = new Date(clickedDate);
 
   if (clickedDateF.valueOf() - new Date().valueOf() < 0)
@@ -37,6 +41,9 @@ const getNewSelectedDates = (clickedDate: string, selectedDates: string[]) => {
   if (selectedDates.includes(clickedDate)) {
     return selectedDates.filter((selectedDate) => selectedDate !== clickedDate);
   }
+  if (tripType === "one-way") return [clickedDate];
+  console.log("tripType", tripType);
+
   if (selectedDates.length < 2)
     return getSortedDates([...selectedDates, clickedDate]);
 
@@ -130,11 +137,12 @@ export const DatePicker: FC<DatePickerProps> = ({
               getClickedDate={(date) => {
                 getSelectedDates &&
                   getSelectedDates(
-                    getNewSelectedDates(date, selectedDates || [])
+                    getNewSelectedDates(date, selectedDates || [], tripType)
                   );
               }}
             />
             <Calendar
+              className="right-calendar"
               key={"calender2"}
               month={
                 getMonthChange(1, calendarDate.month, calendarDate.year).month +
@@ -147,7 +155,7 @@ export const DatePicker: FC<DatePickerProps> = ({
               getClickedDate={(date) => {
                 getSelectedDates &&
                   getSelectedDates(
-                    getNewSelectedDates(date, selectedDates || [])
+                    getNewSelectedDates(date, selectedDates || [], tripType)
                   );
               }}
             />

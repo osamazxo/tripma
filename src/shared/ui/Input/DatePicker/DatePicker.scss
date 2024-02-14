@@ -1,9 +1,7 @@
 .date-picker-container {
   position: relative;
   width: fit-content;
-  .input-container {
-    width: 252px;
-  }
+
   .date-picker {
     width: 642px;
     border: 1px solid var(--grey-200);
@@ -50,6 +48,28 @@
           stroke: var(--grey-400);
         }
       }
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  .date-picker-container {
+    .date-picker {
+      width: 320px;
+      top: -60px;
+      right: -35px;
+      .header {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        .field-group {
+          flex-direction: column;
+          gap: 8px;
+        }
+      }
+    }
+    .right-calendar {
+      display: none;
     }
   }
 }
