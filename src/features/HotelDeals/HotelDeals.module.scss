@@ -1,4 +1,4 @@
-.flight-deals {
+.hotel-deals {
   padding: 40px 64px 0;
   button {
     margin: 80px auto 40px auto;
@@ -8,6 +8,7 @@
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .view-all {
   display: flex;
@@ -34,4 +35,22 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 40px;
   margin-bottom: 40px;
+}
+
+@media (max-width: 500px) {
+  .hotel-deals {
+    padding: 40px 16px;
+    margin-top: 40px;
+  }
+  .header {
+    h3 {
+      font-size: 16px;
+    }
+  }
+  .view-all {
+    font-size: 16px;
+    svg {
+      height: 24px;
+    }
+  }
 }

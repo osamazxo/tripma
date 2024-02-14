@@ -33,3 +33,21 @@
   grid-gap: 40px;
   margin-bottom: 40px;
 }
+
+@media (max-width: 500px) {
+  .flight-deals {
+    padding: 40px 16px;
+    margin-top: 40px;
+  }
+  .header {
+    h3 {
+      font-size: 16px;
+    }
+  }
+  .view-all {
+    font-size: 16px;
+    svg {
+      height: 24px;
+    }
+  }
+}

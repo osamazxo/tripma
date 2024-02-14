@@ -1,10 +1,10 @@
 import { Card } from "@shared/ui/Card/Card";
 import styles from "./HotelDeals.module.scss";
-import { Button } from "@shared/ui/Button/Button";
+import { Button } from "@shared/ui/Button";
 import ArrowRightIcon from "@shared/icons/32/arrowRight.svg?react";
 export const HotelDeals = () => {
   return (
-    <div className={styles["flight-deals"]}>
+    <div className={styles["hotel-deals"]}>
       <div className={styles["header"]}>
         <h3 className={styles["title"]}>
           Explore unique <span>places to stay</span>

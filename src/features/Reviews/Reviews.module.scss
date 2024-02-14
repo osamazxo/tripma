@@ -14,3 +14,9 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
 }
+
+@media (max-width: 500px) {
+  .reviews {
+    padding: 64px 16px;
+  }
+}

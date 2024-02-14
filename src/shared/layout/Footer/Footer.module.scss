@@ -79,3 +79,28 @@
     }
   }
 }
+
+@media (max-width: 1024px) {
+  .footer {
+    .top-container {
+      padding: 60px 40px 40px;
+    }
+    .bottom-container {
+      padding: 16px 40px;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .footer {
+    .top-container {
+      padding: 60px 32px 32px;
+    }
+    .bottom-container {
+      padding: 16px 32px;
+      .copyright {
+        font-size: var(--font-xs);
+      }
+    }
+  }
+}

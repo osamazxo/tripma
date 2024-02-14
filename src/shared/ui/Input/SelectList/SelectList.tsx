@@ -15,6 +15,7 @@ interface SelectListProps extends HTMLAttributes<HTMLDivElement> {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   placeholder?: string;
+  name?: string;
 }
 export const SelectList: FC<SelectListProps> = ({
   options,
@@ -30,6 +31,7 @@ export const SelectList: FC<SelectListProps> = ({
   startIcon,
   endIcon,
   placeholder,
+  name,
   ...other
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,6 +48,7 @@ export const SelectList: FC<SelectListProps> = ({
     startIcon,
     endIcon,
     placeholder,
+    name,
   };
   const handleSingleSelect = (option: string) => {
     setSelected(option);

@@ -108,7 +108,7 @@ export const Footer = () => {
             <FacebookIcon />
           </a>
         </div>
-        <p className="copyright">
+        <p className={styles["copyright"]}>
           © {new Date().getFullYear()} Tripma incorporated
         </p>
       </div>

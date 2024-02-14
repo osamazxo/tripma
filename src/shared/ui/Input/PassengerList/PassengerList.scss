@@ -1,0 +1,20 @@
+.passenger-list-container {
+  position: relative;
+  ul {
+    display: none;
+  }
+  ul[aria-expanded="true"] {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    z-index: 100;
+    padding: 16px;
+    left: 24px;
+    background-color: white;
+    border-radius: 4px;
+    min-width: 200px;
+    border: 1px solid var(--grey-200);
+    box-shadow: var(--elevation-medium);
+  }
+}

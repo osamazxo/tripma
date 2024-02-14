@@ -5,7 +5,7 @@ import { RadioButton, TextField } from "..";
 import CalendarIcon from "@shared/icons/32/calendar-with-dates.svg?react";
 import ChevronLeft from "@shared/icons/32/chevron-Left.svg?react";
 import ChevronRight from "@shared/icons/32/chevron-Right.svg?react";
-import { Button } from "../../Button/Button";
+import { Button } from "../../Button";
 import useFocusOut from "src/hooks/useFocusOut";
 import clsx from "clsx";
 interface DatePickerProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -13,6 +13,7 @@ interface DatePickerProps extends React.HTMLAttributes<HTMLDivElement> {
   tripType?: string;
   getSelectedDates?: (dates: string[]) => void;
   getTripType?: (type: string) => void;
+  name?: string;
 }
 const getMonthChange = (value: number, month: number, year: number) => {
   const date = new Date(year, month + value, 1);
@@ -58,6 +59,7 @@ export const DatePicker: FC<DatePickerProps> = ({
   getSelectedDates,
   tripType,
   getTripType,
+  name,
   ...other
 }) => {
   const [opened, setOpened] = useState<boolean>(false);
@@ -85,6 +87,7 @@ export const DatePicker: FC<DatePickerProps> = ({
         startIcon={<CalendarIcon />}
         placeholder="Depart - Arrive"
         onClick={() => setOpened((old) => !old)}
+        name={name}
         defaultValue={
           selectedDates &&
           [...selectedDates]
@@ -116,6 +119,7 @@ export const DatePicker: FC<DatePickerProps> = ({
                 startIcon={<CalendarIcon />}
                 placeholder="Depart - Arrive"
                 autoFocus
+                name={name}
                 onChange={(event) => {
                   getSelectedDates &&
                     getSelectedDates(event.target.value.split(" - ") || []);

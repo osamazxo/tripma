@@ -3,7 +3,7 @@ import Logo from "../../logos/tripma/tripma-lp.svg?react";
 import MenuIcon from "@shared/icons/32/menu.svg?react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
-import { Button } from "@shared/ui/Button/Button";
+import { Button } from "@shared/ui/Button";
 import { getAuth } from "@util/auth";
 interface HeaderProps extends HTMLAttributes<HTMLDivElement> {}
 export const Header: FC<HeaderProps> = () => {
