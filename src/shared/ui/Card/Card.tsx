@@ -1,9 +1,9 @@
-import { FC, HTMLAttributes } from "react";
+import { FC, HTMLAttributes, ReactNode } from "react";
 import styles from "./Card.module.scss";
 import clsx from "clsx";
-interface CardProps extends HTMLAttributes<HTMLDivElement> {
+interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   img: string;
-  title: any;
+  title: ReactNode | string;
   description: string;
   price?: number;
   saturation?: boolean;
@@ -19,19 +19,21 @@ export const Card: FC<CardProps> = ({
   ...other
 }) => {
   return (
-    <div className={clsx(styles.card, className)} {...other}>
+    <div className={clsx("card", styles.card, className)} {...other}>
       <img
         src={img}
         alt=""
         loading="lazy"
         style={{ filter: saturation ? "saturate(1.7)" : "none" }}
       />
-      <div className={styles["text"]}>
-        <div className={styles["header-text"]}>
+      <div className={clsx("text", styles["text"])}>
+        <div className={clsx("header-text", styles["header-text"])}>
           <h4 className={styles["title"]}>{title}</h4>
           {price && <h4 className={styles["price"]}>${price}</h4>}
         </div>
-        <p className={styles["description"]}>{description}</p>
+        <p className={clsx("description", styles["description"])}>
+          {description}
+        </p>
       </div>
     </div>
   );

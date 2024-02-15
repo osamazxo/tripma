@@ -12,7 +12,7 @@ export const FlightSearchBar = () => {
     initialValues: {
       fromDestination: "",
       toDestination: "",
-      tripType: "round-trip",
+      tripType: "single",
       slectedDates: [],
       passengerCount: { adults: 1, minors: 0 },
     },
@@ -52,11 +52,13 @@ export const FlightSearchBar = () => {
       </div>
       <div>
         <DatePicker
-          tripType={formik.values.tripType}
-          getTripType={(val) => formik.setFieldValue("tripType", val)}
+          type={formik.values.tripType}
+          getType={(val) => formik.setFieldValue("tripType", val)}
           selectedDates={formik.values.slectedDates}
           getSelectedDates={(val) => formik.setFieldValue("slectedDates", val)}
           name="travelingDate"
+          placeholder="Depart - Arrive"
+          radioNames={["Round trip", "One way"]}
         />
         <PassengerList
           className="passenger-count"

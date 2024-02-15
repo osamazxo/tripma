@@ -1,0 +1,30 @@
+.hotel-hero {
+  height: 700px;
+  background-image: url("/images/26.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  h2 {
+    font-size: 112px;
+    line-height: 110px;
+    color: white;
+    margin-top: 0;
+    font-weight: 800;
+    padding-top: 195px;
+    text-align: center;
+    span {
+      color: rgba($color: #fff, $alpha: 0.5);
+      font-family: serif;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .hotel-hero {
+    h2 {
+      font-size: 60px;
+      line-height: 58px;
+      padding-top: 150px;
+    }
+  }
+}

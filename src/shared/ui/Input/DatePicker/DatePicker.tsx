@@ -10,10 +10,13 @@ import useFocusOut from "src/hooks/useFocusOut";
 import clsx from "clsx";
 interface DatePickerProps extends React.HTMLAttributes<HTMLDivElement> {
   selectedDates?: string[];
-  tripType?: string;
+  type?: "single" | "multiple" | string;
   getSelectedDates?: (dates: string[]) => void;
-  getTripType?: (type: string) => void;
+  getType?: (type: string) => void;
   name?: string;
+  placeholder?: string;
+  multiple?: boolean;
+  radioNames?: [string, string];
 }
 const getMonthChange = (value: number, month: number, year: number) => {
   const date = new Date(year, month + value, 1);
@@ -32,7 +35,7 @@ function getSortedDates(dates: string[]) {
 const getNewSelectedDates = (
   clickedDate: string,
   selectedDates: string[],
-  tripType?: string
+  type?: string
 ) => {
   const clickedDateF = new Date(clickedDate);
 
@@ -43,7 +46,7 @@ const getNewSelectedDates = (
     return selectedDates.filter((selectedDate) => selectedDate !== clickedDate);
   }
 
-  if (tripType === "one-way") return [clickedDate];
+  if (type === "single") return [clickedDate];
 
   if (selectedDates.length < 2)
     return getSortedDates([...selectedDates, clickedDate]);
@@ -57,9 +60,11 @@ const getNewSelectedDates = (
 export const DatePicker: FC<DatePickerProps> = ({
   selectedDates,
   getSelectedDates,
-  tripType,
-  getTripType,
+  type,
+  getType,
   name,
+  placeholder,
+  radioNames,
   ...other
 }) => {
   const [opened, setOpened] = useState<boolean>(false);
@@ -80,12 +85,20 @@ export const DatePicker: FC<DatePickerProps> = ({
       return getMonthChange(value, old.month, old.year);
     });
   };
-
+  const handletypeChange = (val: string) => {
+    if (getType) {
+      getType(val);
+      if (val === "single") {
+        getSelectedDates &&
+          getSelectedDates([selectedDates ? selectedDates[0] : ""]);
+      }
+    }
+  };
   return (
     <div className={clsx("date-picker-container", other.className)}>
       <TextField
         startIcon={<CalendarIcon />}
-        placeholder="Depart - Arrive"
+        placeholder={placeholder}
         onClick={() => setOpened((old) => !old)}
         name={name}
         defaultValue={
@@ -100,24 +113,24 @@ export const DatePicker: FC<DatePickerProps> = ({
           <div className="header">
             <div className="radio-group">
               <RadioButton
-                label="Round Trip"
+                label={radioNames?.[0] || "Single"}
                 name="flightType"
-                id="round-trip"
-                checked={tripType === "round-trip"}
-                onChange={() => getTripType && getTripType("round-trip")}
+                id="multiple"
+                checked={type === "multiple"}
+                onChange={() => handletypeChange("multiple")}
               />
               <RadioButton
-                label="One Way"
+                label={radioNames?.[1] || "Multiple"}
                 name="flightType"
-                id="one-way"
-                checked={tripType === "one-way"}
-                onChange={() => getTripType && getTripType("one-way")}
+                id="single"
+                checked={type === "single"}
+                onChange={() => handletypeChange("single")}
               />
             </div>
             <div className="field-group">
               <TextField
                 startIcon={<CalendarIcon />}
-                placeholder="Depart - Arrive"
+                placeholder={placeholder}
                 autoFocus
                 name={name}
                 onChange={(event) => {
@@ -141,7 +154,7 @@ export const DatePicker: FC<DatePickerProps> = ({
               getClickedDate={(date) => {
                 getSelectedDates &&
                   getSelectedDates(
-                    getNewSelectedDates(date, selectedDates || [], tripType)
+                    getNewSelectedDates(date, selectedDates || [], type)
                   );
               }}
             />
@@ -159,7 +172,7 @@ export const DatePicker: FC<DatePickerProps> = ({
               getClickedDate={(date) => {
                 getSelectedDates &&
                   getSelectedDates(
-                    getNewSelectedDates(date, selectedDates || [], tripType)
+                    getNewSelectedDates(date, selectedDates || [], type)
                   );
               }}
             />

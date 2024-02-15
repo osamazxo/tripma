@@ -1,0 +1,35 @@
+.searchbar {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: 80px auto 0 auto;
+  box-shadow: var(--elevation-medium);
+  border-radius: 4px;
+  & > div {
+    display: flex;
+  }
+}
+.searchbar :global(.location .input-container),
+.searchbar :global(.members-count .input-container),
+.searchbar :global(.date-picker-container > .input-container) {
+  & > div {
+    border-radius: 0px;
+    border: 1px solid var(--grey-200);
+  }
+}
+
+@media (max-width: 1100px) {
+  .searchbar {
+    flex-direction: column;
+  }
+  .searchbar :global(.location .input-container) {
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .searchbar {
+    & > div {
+      flex-direction: column;
+    }
+  }
+}

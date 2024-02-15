@@ -1,4 +1,4 @@
-import { FlightSearchBar } from "@features/FlightSearchBar/FlightSearchBar";
+import { FlightSearchBar } from "@features/flights/FlightSearchBar/FlightSearchBar";
 import styles from "./FlightHero.module.scss";
 export const FlightHero = () => {
   return (

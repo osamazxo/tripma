@@ -48,11 +48,21 @@ export const PassengerList: FC<PassengerListProps> = ({
       getValue && getValue({ ...value, [name]: newVal });
     }
   };
+  const valueName = () => {
+    const val = [];
+    if (value?.adults && value?.adults > 0) {
+      val.push(`${value?.adults} adults`);
+    }
+    if (value?.minors && value.minors > 0) {
+      val.push(`${value?.minors} minors`);
+    }
+    return val.join(" - ");
+  };
   return (
     <div className={clsx("passenger-list-container", className)}>
       <TextField
         {...TextFieldProps}
-        value={`${value?.adults} adults - ${value?.minors} minors`}
+        value={valueName() || "0 adult"}
         readOnly
         onClick={() => setMenuOpen(true)}
       />

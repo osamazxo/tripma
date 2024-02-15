@@ -1,5 +1,5 @@
-.hotel-deals {
-  padding: 40px 64px 0;
+.card-row {
+  width: 100%;
   button {
     margin: 80px auto 40px auto;
   }
@@ -38,13 +38,9 @@
 }
 
 @media (max-width: 500px) {
-  .hotel-deals {
-    padding: 40px 16px;
-    margin-top: 40px;
-  }
   .header {
     h3 {
-      font-size: 16px;
+      font-size: 20px;
     }
   }
   .view-all {
