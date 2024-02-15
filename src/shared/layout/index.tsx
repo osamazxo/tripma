@@ -3,8 +3,10 @@ import { Header } from "./Header/Header";
 import { Outlet } from "react-router-dom";
 import styles from "./Layout.module.scss";
 import { Footer } from "./Footer/Footer";
+import { useScrollToTop } from "@hooks/useScrollToTop";
 interface LayoutProps extends HTMLAttributes<HTMLDivElement> {}
 export const Layout: FC<LayoutProps> = () => {
+  useScrollToTop();
   return (
     <div>
       <Header />

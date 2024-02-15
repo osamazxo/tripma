@@ -14,7 +14,13 @@ const TitleComponent: FC<{
 const cards = [
   {
     img: "images/19.png",
-    title: <TitleComponent info="The Bund, " span="Shanghai" color="#FFB800" />,
+    title: (
+      <TitleComponent
+        info="The Bund, "
+        span="Shanghai"
+        color="var(--purple-blue)"
+      />
+    ),
     price: 598,
     description: "China’s most international city",
     saturation: true,
@@ -25,7 +31,7 @@ const cards = [
       <TitleComponent
         info="Sydney Opera House, "
         span="Sydney"
-        color="#FFB800"
+        color="var(--purple-blue)"
       />
     ),
     price: 981,
@@ -35,7 +41,11 @@ const cards = [
   {
     img: "images/5.png",
     title: (
-      <TitleComponent info="Kōdaiji Temple, " span="Kyoto" color="#FFB800" />
+      <TitleComponent
+        info="Kōdaiji Temple, "
+        span="Kyoto"
+        color="var(--purple-blue)"
+      />
     ),
     price: 633,
     description: "Step back in time in the Gion district",
@@ -50,7 +60,7 @@ export const FlightDeals = () => {
           <TitleComponent
             info="Find your next adventure with these"
             span="flight deals"
-            color="#FFB800"
+            color="var(--purple-blue)"
           />
         }
         cards={cards}

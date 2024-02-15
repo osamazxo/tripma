@@ -9,7 +9,7 @@
   left: 0;
   right: 0;
   background-color: white;
-  & > div {
+  & > div:first-of-type {
     display: flex;
     align-items: center;
     & > svg {

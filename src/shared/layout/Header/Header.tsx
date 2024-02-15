@@ -1,13 +1,16 @@
-import { FC, HTMLAttributes } from "react";
+import { FC, HTMLAttributes, useState } from "react";
 import Logo from "../../logos/tripma/tripma-lp.svg?react";
 import MenuIcon from "@shared/icons/32/menu.svg?react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import { Button } from "@shared/ui/Button";
 import { getAuth } from "@util/auth";
+import { Modal } from "@shared/ui/Modal/Modal";
+import { SignUp } from "@features/auth/Signup/SignUp";
 interface HeaderProps extends HTMLAttributes<HTMLDivElement> {}
 export const Header: FC<HeaderProps> = () => {
   const token = getAuth;
+  const [showAuthDialog, setShowAuthDialog] = useState(false);
   return (
     <header className={styles.header}>
       <div>
@@ -29,9 +32,13 @@ export const Header: FC<HeaderProps> = () => {
         {!token && (
           <>
             <li>
-              <Link to="/cars">Sign in</Link>
+              <Link to="" onClick={() => setShowAuthDialog(true)}>
+                Sign in
+              </Link>
             </li>
-            <Button size="sm">Sign up</Button>
+            <Button size="sm" onClick={() => setShowAuthDialog(true)}>
+              Sign up
+            </Button>
           </>
         )}
         {token && (
@@ -45,6 +52,9 @@ export const Header: FC<HeaderProps> = () => {
           </>
         )}
       </ul>
+      <Modal opened={showAuthDialog} setOpened={setShowAuthDialog}>
+        <SignUp setOpen={setShowAuthDialog} />
+      </Modal>
     </header>
   );
 };

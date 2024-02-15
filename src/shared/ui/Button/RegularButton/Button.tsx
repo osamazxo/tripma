@@ -5,26 +5,30 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "xs" | "sm" | "md" | "lg";
   variant?: "primary" | "secondary" | "tertiary";
   state?: "active" | "disabled" | "error";
-  icon?: React.ReactNode;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
 }
 export const Button: FC<ButtonProps> = ({
   size = "md",
   variant = "primary",
   children,
-  icon,
+  leftIcon,
+  rightIcon,
   state,
   type,
+  className,
   ...other
 }) => {
   return (
     <button
-      className={clsx("button", variant, size, state)}
+      className={clsx("button", variant, size, state, className)}
       {...other}
       disabled={state === "disabled"}
       type={type}
     >
+      {leftIcon && <span className="button-icon">{leftIcon}</span>}
       <span>{children}</span>
-      {icon && <span className="button-icon">{icon}</span>}
+      {rightIcon && <span className="button-icon">{rightIcon}</span>}
     </button>
   );
 };
