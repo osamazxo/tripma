@@ -13,7 +13,7 @@ const TitleComponent: FC<{
 );
 const cards = [
   {
-    img: "images/19.png",
+    img: "/images/19.png",
     title: (
       <TitleComponent
         info="The Bund, "
@@ -26,7 +26,7 @@ const cards = [
     saturation: true,
   },
   {
-    img: "images/20.png",
+    img: "/images/20.png",
     title: (
       <TitleComponent
         info="Sydney Opera House, "
@@ -39,7 +39,7 @@ const cards = [
     saturation: true,
   },
   {
-    img: "images/5.png",
+    img: "/images/5.png",
     title: (
       <TitleComponent
         info="Kōdaiji Temple, "
@@ -67,7 +67,7 @@ export const FlightDeals = () => {
         viewAllUrl="/flights"
       />
       <Card
-        img="images/3.png"
+        img="/images/3.png"
         title={
           <>
             Tsavo East National Park, <span>Kenya</span>

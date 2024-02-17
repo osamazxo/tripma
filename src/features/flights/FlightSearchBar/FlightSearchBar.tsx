@@ -7,21 +7,43 @@ import Button from "@shared/ui/Button";
 import { useFormik } from "formik";
 import { SelectList } from "@shared/ui/Input/SelectList/SelectList";
 import { PassengerList } from "@shared/ui/Input/PassengerList/PassengerList";
-export const FlightSearchBar = () => {
+import { useNavigate } from "react-router-dom";
+import { FC } from "react";
+import clsx from "clsx";
+interface FlightSearchBarProps {
+  className?: string;
+  initialValues?: {
+    fromDestination?: string;
+    toDestination?: string;
+    tripType?: string;
+    slectedDates?: string[];
+    passengerCount?: { adults: number; minors: number };
+  };
+}
+export const FlightSearchBar: FC<FlightSearchBarProps> = ({
+  initialValues: initVal,
+  className,
+}) => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      fromDestination: "",
-      toDestination: "",
-      tripType: "single",
-      slectedDates: [],
-      passengerCount: { adults: 1, minors: 0 },
+      fromDestination: initVal?.fromDestination || "",
+      toDestination: initVal?.toDestination || "",
+      tripType: initVal?.tripType || "multiple",
+      slectedDates: initVal?.slectedDates || [],
+      passengerCount: initVal?.passengerCount || { adults: 1, minors: 0 },
     },
     onSubmit: (values) => {
-      console.log(values);
+      const encoded = encodeURIComponent(JSON.stringify(values));
+      console.log(encoded);
+      navigate(`/flights/search?${encoded}`);
     },
   });
   return (
-    <form className={styles.searchbar} onSubmit={formik.handleSubmit}>
+    <form
+      className={clsx(styles.searchbar, className)}
+      onSubmit={formik.handleSubmit}
+    >
       <div>
         <SelectList
           key={"fromDestination"}

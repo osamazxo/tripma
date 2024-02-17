@@ -1,0 +1,15 @@
+.page-container {
+  padding: 0 64px;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 0 16px;
+  }
+}

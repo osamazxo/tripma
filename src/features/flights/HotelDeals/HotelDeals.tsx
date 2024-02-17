@@ -12,7 +12,7 @@ const TitleComponent: FC<{
 );
 const cards = [
   {
-    img: "images/22.png",
+    img: "/images/22.png",
     title: (
       <TitleComponent
         info="Discover the"
@@ -24,7 +24,7 @@ const cards = [
       "From the 2nd century AD, the islands were known as the 'Money Isles' due to the abundance of cowry shells, a currency of the early ages.",
   },
   {
-    img: "images/21.png",
+    img: "/images/21.png",
     title: (
       <TitleComponent
         info="Experience the Ourika Valley in"
@@ -36,7 +36,7 @@ const cards = [
       "Morocco’s Hispano-Moorish architecture blends influences from Berber culture, Spain, and contemporary artistic currents in the Middle East.",
   },
   {
-    img: "images/23.png",
+    img: "/images/23.png",
     title: (
       <TitleComponent
         info="Live traditionally in"

@@ -1,3 +1,4 @@
+import { FlightSearch } from "@pages/FlightSearch";
 import { Home } from "@pages/Home";
 import { Hotels } from "@pages/Hotels";
 import { Layout } from "@shared/layout";
@@ -9,12 +10,18 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Home />,
       },
       {
         path: "/flights",
-        element: <Home />,
+        children: [
+          { index: true, element: <Home /> },
+          {
+            path: "search",
+            element: <FlightSearch />,
+          },
+        ],
       },
       {
         path: "/hotels",
