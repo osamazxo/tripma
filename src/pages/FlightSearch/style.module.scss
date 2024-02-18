@@ -24,4 +24,18 @@
 }
 .right-container {
   padding-top: 198px;
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .flight-search-page {
+    grid-template-columns: 1fr;
+  }
+  .right-container {
+    padding-top: 0;
+  }
 }

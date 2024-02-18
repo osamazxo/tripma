@@ -1,5 +1,7 @@
 .page-container {
   padding: 0 64px;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {

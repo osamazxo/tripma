@@ -1,6 +1,3 @@
-.reviews {
-  padding: 64px;
-}
 .title {
   text-align: center;
   color: var(--grey-600);
@@ -13,10 +10,4 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
-}
-
-@media (max-width: 500px) {
-  .reviews {
-    padding: 64px 16px;
-  }
 }

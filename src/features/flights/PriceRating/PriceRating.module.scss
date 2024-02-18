@@ -1,0 +1,19 @@
+.price-rating {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  & > div:first-of-type {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  & > div:last-of-type {
+    & > p:first-of-type {
+      color: var(--grey-600);
+    }
+    & > p:last-of-type {
+      margin-top: 8px;
+      color: var(--grey-300);
+    }
+  }
+}

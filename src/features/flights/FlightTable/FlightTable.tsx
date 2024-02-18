@@ -1,20 +1,21 @@
 import { FC, useState } from "react";
-import { FlightDataRow, TableCell } from "./TableCell";
+import { TableCell } from "./TableCell";
 import styles from "./FlightTable.module.scss";
 import Button from "@shared/ui/Button";
+import { Flight } from "@shared/types";
 interface FlightTable {
-  data: FlightDataRow[];
+  flights: Flight[];
   selectedId?: string;
   getSelectedId?: (id: string) => void;
 }
 export const FlightTable: FC<FlightTable> = ({
-  data,
+  flights,
   getSelectedId,
   selectedId,
 }) => {
   const [tableExpanded, setTableExpanded] = useState(false);
-  const handleSelect = (element: FlightDataRow) => {
-    getSelectedId && getSelectedId(element.id);
+  const handleSelect = (element: Flight) => {
+    getSelectedId && getSelectedId(element.id || "");
   };
   return (
     <div className={styles["flight-table"]}>
@@ -24,12 +25,12 @@ export const FlightTable: FC<FlightTable> = ({
       >
         <table cellSpacing={"1px"}>
           <tbody>
-            {data.map((row, index) => (
+            {flights.map((flight, index) => (
               <TableCell
                 key={"ft" + index}
-                {...row}
-                onClick={() => handleSelect(row)}
-                aria-selected={row.id === selectedId}
+                flight={flight}
+                onClick={() => handleSelect(flight)}
+                aria-selected={flight.id === selectedId}
               />
             ))}
           </tbody>

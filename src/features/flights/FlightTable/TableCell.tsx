@@ -1,57 +1,41 @@
 import { FC } from "react";
 import styles from "./TableCell.module.scss";
+import { Flight } from "@shared/types";
 interface FlightDataRow
   extends Omit<React.HtmlHTMLAttributes<HTMLTableRowElement>, "id"> {
-  id: string;
-  logo: string;
-  airline: string;
-  duration: string;
-  time: string;
-  stops: {
-    name: string;
-    duration: string;
-  }[];
-  price: number;
-  tripType: string;
+  flight: Flight;
 }
-export const TableCell: FC<FlightDataRow> = ({
-  logo,
-  airline,
-  duration,
-  time,
-  stops,
-  price,
-  tripType,
-  ...other
-}) => {
+export const TableCell: FC<FlightDataRow> = ({ flight, ...other }) => {
   return (
     <tr className={styles["table-cell"]} tabIndex={0} {...other}>
       <td className={styles["logo"]}>
-        <img src={logo} alt="" />
+        <img src={flight.logo} alt="" />
       </td>
       <td>
-        <p className="duration">{duration}</p>
-        <p className="airline">{airline}</p>
+        <p className="duration">{flight.duration}</p>
+        <p className="airline">{flight.airline}</p>
       </td>
       <td>
-        <p>{time}</p>
+        <p>{flight.time}</p>
         <p>_</p>
       </td>
       <td>
         <p>
-          {stops.length === 0
+          {flight.stops?.length === 0
             ? "Nonstop"
-            : stops.length + " stop" + `${stops.length === 1 ? "" : "s"}`}
+            : flight.stops?.length +
+              " stop" +
+              `${flight.stops?.length === 1 ? "" : "s"}`}
         </p>
-        {stops.map((stop) => (
+        {flight.stops?.map((stop) => (
           <p>
             {stop.duration} in {stop.name}
           </p>
         ))}
       </td>
       <td>
-        <p>${price}</p>
-        <p>{tripType}</p>
+        <p>${flight.price?.total}</p>
+        <p>{flight.tripType}</p>
       </td>
     </tr>
   );

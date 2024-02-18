@@ -1,14 +1,12 @@
 import { useState } from "react";
 import styles from "./PriceGrid.module.scss";
 const checkHovered = (i: number, j: number, current: [number, number]) => {
-  console.log(i <= current[0] && j <= current[1]);
   return (
     (i == current[0] && j <= current[1]) || (i <= current[0] && j == current[1])
   );
 };
 export const PriceGrid = () => {
   const [hoveredCell, setHoveredCell] = useState<[number, number]>([-1, -1]);
-  console.log(hoveredCell);
   return (
     <div className={styles["price-grid"]}>
       <h4 className={styles["title"]}>

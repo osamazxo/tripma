@@ -10,15 +10,10 @@ import { PassengerList } from "@shared/ui/Input/PassengerList/PassengerList";
 import { useNavigate } from "react-router-dom";
 import { FC } from "react";
 import clsx from "clsx";
+import { FlightSearchValues } from "@shared/types";
 interface FlightSearchBarProps {
   className?: string;
-  initialValues?: {
-    fromDestination?: string;
-    toDestination?: string;
-    tripType?: string;
-    slectedDates?: string[];
-    passengerCount?: { adults: number; minors: number };
-  };
+  initialValues?: FlightSearchValues;
 }
 export const FlightSearchBar: FC<FlightSearchBarProps> = ({
   initialValues: initVal,

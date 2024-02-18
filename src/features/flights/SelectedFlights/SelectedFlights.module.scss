@@ -1,0 +1,37 @@
+.selected-flights {
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.flights {
+  border: 1px solid var(--purple-extra-light);
+  border: 1px solid var(--purple-extra-light);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: self-end;
+}
+
+.details {
+  h5 {
+    width: 200px;
+    color: var(--grey-900);
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+    align-items: self-end;
+    span {
+      display: block;
+      text-align: right;
+    }
+  }
+}
