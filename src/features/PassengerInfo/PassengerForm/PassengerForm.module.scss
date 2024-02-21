@@ -1,0 +1,15 @@
+.passenger-title {
+  color: var(--grey-600);
+  margin-bottom: 16px;
+}
+.first,
+.second {
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr;
+  gap: 20px;
+}
+
+.second {
+  grid-template-columns: 6fr 6fr;
+  margin: 36px 0;
+}

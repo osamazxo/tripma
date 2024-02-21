@@ -5,7 +5,7 @@ import { Card } from "@shared/ui/Card/Card";
 import { CardRow } from "@shared/ui/CardRow/CardRow";
 import { RowTitle } from "@shared/ui/RowTitle/RowTitle";
 
-export const Home = () => {
+export const FlightsHome = () => {
   return (
     <>
       <FlightHero />

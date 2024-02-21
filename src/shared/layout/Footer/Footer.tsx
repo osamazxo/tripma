@@ -88,10 +88,14 @@ export const Footer = () => {
           })}
           <div className={styles["download"]}>
             <a href="https://www.apple.com/eg/app-store/" target="_blank">
-              <img src="/images/app-store.png" alt="app store" />
+              <img src="/images/app-store.png" alt="app store" loading="lazy" />
             </a>
             <a href="https://play.google.com/store" target="_blank">
-              <img src="/images/google-play.png" alt="google play" />
+              <img
+                src="/images/google-play.png"
+                alt="google play"
+                loading="lazy"
+              />
             </a>
           </div>
         </div>

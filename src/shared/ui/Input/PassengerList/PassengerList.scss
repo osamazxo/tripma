@@ -1,9 +1,9 @@
 .passenger-list-container {
   position: relative;
-  ul {
+  > div:last-of-type {
     display: none;
   }
-  ul[aria-expanded="true"] {
+  > div:last-of-type[aria-expanded="true"] {
     display: flex;
     flex-direction: column;
     gap: 8px;

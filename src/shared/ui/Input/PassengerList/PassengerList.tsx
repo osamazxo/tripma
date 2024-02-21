@@ -1,6 +1,6 @@
 import { FC, useRef, useState } from "react";
 import { TextField } from "..";
-import { ListItem } from "./ListItem";
+import { Count } from "../Count/Count";
 import useFocusOut from "@hooks/useFocusOut";
 import "./PassengerList.scss";
 import clsx from "clsx";
@@ -66,18 +66,18 @@ export const PassengerList: FC<PassengerListProps> = ({
         readOnly
         onClick={() => setMenuOpen(true)}
       />
-      <ul ref={menuRef} aria-expanded={menuOpen}>
-        <ListItem
+      <div ref={menuRef} aria-expanded={menuOpen}>
+        <Count
           name="adults"
           value={value?.adults}
           getNewValue={(val) => handleChange("adults", val)}
         />
-        <ListItem
+        <Count
           name="minors"
           value={value?.minors}
           getNewValue={(val) => handleChange("minors", val)}
         />
-      </ul>
+      </div>
     </div>
   );
 };

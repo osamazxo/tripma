@@ -1,20 +1,16 @@
 import { FC } from "react";
-import styles from "./ListItem.module.scss";
+import styles from "./Count.module.scss";
 import { OperationButton } from "@shared/ui/Button/OperationButton/OperationButton";
 
-interface ListItemProps {
-  name: string;
+interface CountProps {
+  name?: string;
   value?: number;
   getNewValue?: (val: number) => void;
 }
 
-export const ListItem: FC<ListItemProps> = ({
-  name,
-  value = 0,
-  getNewValue,
-}) => {
+export const Count: FC<CountProps> = ({ name, value = 0, getNewValue }) => {
   return (
-    <li className={styles["list-item"]}>
+    <div className={styles["list-item"]}>
       <span className={styles["name"]}>{name}</span>
       <div>
         <OperationButton
@@ -31,6 +27,6 @@ export const ListItem: FC<ListItemProps> = ({
           }}
         />
       </div>
-    </li>
+    </div>
   );
 };

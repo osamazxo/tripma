@@ -1,3 +1,4 @@
+import { Flight } from "@shared/types";
 import { RowTitle } from "@shared/ui/RowTitle/RowTitle";
 export {
   flightDeals1,
@@ -93,7 +94,7 @@ const hotelDeals1 = [
   },
 ];
 
-const departingFlights = [
+const departingFlights: Flight[] = [
   {
     id: "1",
     logo: "/airlines/Hawaiian Airlines.svg",
@@ -107,8 +108,8 @@ const departingFlights = [
       },
     ],
     price: { subtotal: 504, taxes: 120, total: 624 },
-    tripType: "round trip",
-    tripNumber: "FIG1234",
+    flightType: "round trip",
+    flightNumber: "FIG1234",
   },
   {
     id: "2",
@@ -123,12 +124,12 @@ const departingFlights = [
       },
     ],
     price: { subtotal: 504, taxes: 120, total: 624 },
-    tripType: "round trip",
-    tripNumber: "FIG542",
+    flightType: "round trip",
+    flightNumber: "FIG542",
   },
   {
     id: "3",
-    logo: "/public/airlines/Japan Airlines.svg",
+    logo: "/airlines/Japan Airlines.svg",
     airline: "Japan Airlines",
     duration: "20h 14m",
     time: "9:35AM",
@@ -143,12 +144,12 @@ const departingFlights = [
       },
     ],
     price: { subtotal: 820, taxes: 160, total: 660 },
-    tripType: "round trip",
-    tripNumber: "FIG486",
+    flightType: "round trip",
+    flightNumber: "FIG486",
   },
 ];
 
-const returningFlights = [
+const returningFlights: Flight[] = [
   {
     id: "30",
     logo: "/airlines/Qantas Airlines.svg",
@@ -162,8 +163,8 @@ const returningFlights = [
       },
     ],
     price: { subtotal: 420, taxes: 100, total: 520 },
-    tripType: "round trip",
-    tripNumber: "HGT452",
+    flightType: "round trip",
+    flightNumber: "HGT452",
   },
   {
     id: "31",
@@ -178,8 +179,8 @@ const returningFlights = [
       },
     ],
     price: { subtotal: 600, taxes: 140, total: 740 },
-    tripType: "round trip",
-    tripNumber: "HGT413",
+    flightType: "round trip",
+    flightNumber: "HGT413",
   },
   {
     id: "32",
@@ -194,7 +195,7 @@ const returningFlights = [
       },
     ],
     price: { subtotal: 760, taxes: 200, total: 960 },
-    tripType: "round trip",
-    tripNumber: "HGT842",
+    flightType: "round trip",
+    flightNumber: "HGT842",
   },
 ];

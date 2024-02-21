@@ -22,9 +22,9 @@ export const FlightSearchBar: FC<FlightSearchBarProps> = ({
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      fromDestination: initVal?.fromDestination || "",
-      toDestination: initVal?.toDestination || "",
-      tripType: initVal?.tripType || "multiple",
+      from: initVal?.from || "",
+      to: initVal?.to || "",
+      flightType: initVal?.flightType || "multiple",
       slectedDates: initVal?.slectedDates || [],
       passengerCount: initVal?.passengerCount || { adults: 1, minors: 0 },
     },
@@ -41,36 +41,32 @@ export const FlightSearchBar: FC<FlightSearchBarProps> = ({
     >
       <div>
         <SelectList
-          key={"fromDestination"}
-          id="fromDestination"
-          name="fromDestination"
+          key={"from"}
+          id="from"
+          name="from"
           className="from-where"
           startIcon={<DepartureIcon />}
           placeholder={"From where?"}
-          getSelected={(selected) =>
-            formik.setFieldValue("fromDestination", selected)
-          }
-          value={formik.values.fromDestination}
+          getSelected={(selected) => formik.setFieldValue("from", selected)}
+          value={formik.values.from}
           options={destinations}
         />
         <SelectList
-          key={"toDestination"}
+          key={"to"}
           className="where-to"
           placeholder={"Where to?"}
-          name="toDestination"
+          name="to"
           startIcon={<ArrivalIcon />}
-          id="toDestination"
-          value={formik.values.toDestination}
-          getSelected={(selected) =>
-            formik.setFieldValue("toDestination", selected)
-          }
+          id="to"
+          value={formik.values.to}
+          getSelected={(selected) => formik.setFieldValue("to", selected)}
           options={destinations}
         />
       </div>
       <div>
         <DatePicker
-          type={formik.values.tripType}
-          getType={(val) => formik.setFieldValue("tripType", val)}
+          type={formik.values.flightType}
+          getType={(val) => formik.setFieldValue("flightType", val)}
           selectedDates={formik.values.slectedDates}
           getSelectedDates={(val) => formik.setFieldValue("slectedDates", val)}
           name="travelingDate"

@@ -7,7 +7,6 @@ import { PriceGrid } from "@features/flights/PriceGrid/PriceGrid";
 import { SelectedFlights } from "@features/flights/SelectedFlights/SelectedFlights";
 import { Flight, FlightSearchValues } from "@shared/types";
 import Button from "@shared/ui/Button";
-import { useLocation } from "react-router-dom";
 import { PriceHistory } from "@features/flights/PriceHistory/PriceHistory";
 import { PriceRating } from "@features/flights/PriceRating/PriceRating";
 import { CardRow } from "@shared/ui/CardRow/CardRow";
@@ -18,6 +17,8 @@ import {
   hotelDeals1,
   returningFlights,
 } from "@shared/data";
+import { useParamsData } from "@hooks/useParamsData";
+import { useNavigate } from "react-router-dom";
 const sortData = (
   data: Flight[],
   sortBy?: "price" | "stops" | "times" | "airlines" | null
@@ -30,37 +31,29 @@ const sortData = (
   console.log(newArr);
   return newArr;
 };
-export const FlightSearch = () => {
-  const [searchValues, setSearchValues] = useState<FlightSearchValues | null>(
-    null
-  );
+export const FlightsSearch = () => {
   const [dataFilter, setDataFilter] = useState<
     "price" | "stops" | "times" | "airlines" | null
   >(null);
-  const [selectedFlights, setSelectedFlights] = useState<[string?, string?]>(
-    []
-  );
-  const { search: searchParams } = useLocation();
-  console.log(dataFilter);
+  const [selectedFlightsId, setSelectedFlightsId] = useState<
+    [string?, string?]
+  >([]);
+  const { data: searchValues } = useParamsData<FlightSearchValues | null>(null);
+  const navigate = useNavigate();
   useEffect(() => {
-    try {
-      const params = searchParams.slice(1);
-      const decoded = JSON.parse(decodeURIComponent(params));
-      setSearchValues(decoded);
-    } catch (error) {
-      console.error("Error parsing search params");
-    }
-    setSelectedFlights([]);
-  }, [searchParams]);
+    setSelectedFlightsId([]);
+  }, [searchValues]);
+
   const currentTable = () => {
-    if (searchValues?.tripType === "multiple") {
-      return selectedFlights[0] ? "returning" : "departing";
+    if (searchValues?.flightType === "multiple") {
+      return selectedFlightsId[0] ? "returning" : "departing";
     } else {
       return "departing";
     }
   };
+
   const handleFlightSelection = (id: string) => {
-    setSelectedFlights((old) => {
+    setSelectedFlightsId((old) => {
       const newArr: [string?, string?] = [...old];
       if (currentTable() === "departing") {
         if (newArr[0] === id) newArr[0] = undefined;
@@ -72,6 +65,22 @@ export const FlightSearch = () => {
       return newArr;
     });
   };
+
+  const handleSubmit = () => {
+    const selectedFlightsInfo = [
+      ...departingFlights.filter(
+        (flight) => flight.id === selectedFlightsId[0]
+      ),
+      ...returningFlights.filter(
+        (flight) => flight.id === selectedFlightsId[1]
+      ),
+    ];
+    const values = { selectedFlights: selectedFlightsInfo, searchValues };
+    console.log(searchValues);
+    const jsonValues = JSON.stringify(values);
+    navigate(`/flights/passenger-info?${encodeURIComponent(jsonValues)}`);
+  };
+
   if (!searchValues) {
     return (
       <div>
@@ -79,6 +88,7 @@ export const FlightSearch = () => {
       </div>
     );
   }
+
   return (
     <div className="page-container">
       <div className={styles["flight-search-page"]}>
@@ -102,43 +112,48 @@ export const FlightSearch = () => {
             }
             selectedId={
               currentTable() === "departing"
-                ? selectedFlights[0]
-                : selectedFlights[1]
+                ? selectedFlightsId[0]
+                : selectedFlightsId[1]
             }
             getSelectedId={(id) => handleFlightSelection(id)}
           />
         </div>
         <div className={styles["right-container"]}>
-          {!selectedFlights[0] && (
+          {!selectedFlightsId[0] && (
             <>
               <PriceGrid />
               <PriceHistory />
               <PriceRating />
             </>
           )}
-          {selectedFlights[0] && (
+          {selectedFlightsId[0] && (
             <SelectedFlights
               flights={[
                 ...departingFlights.filter(
-                  (flight) => flight.id === selectedFlights[0]
+                  (flight) => flight.id === selectedFlightsId[0]
                 ),
                 ...returningFlights.filter(
-                  (flight) => flight.id === selectedFlights[1]
+                  (flight) => flight.id === selectedFlightsId[1]
                 ),
               ]}
             />
           )}
           <div className={styles["button-container"]}>
-            {selectedFlights[0] &&
-              !selectedFlights[1] &&
-              searchValues.tripType === "multiple" && (
+            {selectedFlightsId[0] &&
+              !selectedFlightsId[1] &&
+              searchValues.flightType === "multiple" && (
                 <Button variant="secondary" size="lg">
                   Save and close
                 </Button>
               )}
-            {selectedFlights[0] &&
-              (searchValues.tripType !== "multiple" || selectedFlights[1]) && (
-                <Button variant="primary" size="lg">
+            {selectedFlightsId[0] &&
+              (searchValues.flightType !== "multiple" ||
+                selectedFlightsId[1]) && (
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={() => handleSubmit()}
+                >
                   Passenger information
                 </Button>
               )}
