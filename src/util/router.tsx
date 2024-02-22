@@ -4,7 +4,7 @@ import { HotelsHome } from "@pages/HotelsHome";
 import { Layout } from "@shared/layout";
 import { createBrowserRouter } from "react-router-dom";
 import { FlightPassengerInfo } from "@pages/FlightsPassengerInfo";
-import { FlightSeatSelection } from "@pages/FlightsSeatSelection/FlightSeatSelection";
+import { FlightSeatSelection } from "@pages/FlightsSeatSelection";
 
 const router = createBrowserRouter([
   {

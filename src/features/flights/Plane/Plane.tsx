@@ -13,9 +13,10 @@ export const Plane: FC<PlaneProps> = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1360"
+      width="100%"
       viewBox="0 0 2426 2965"
       fill="none"
+      className="plane-svg-container"
     >
       <g className="plane-svg">
         <PlaneStructure />
