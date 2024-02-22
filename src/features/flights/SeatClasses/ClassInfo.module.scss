@@ -1,6 +1,14 @@
 .class-info {
   padding: 32px 8px;
 }
+.image {
+  display: flex;
+  justify-content: center;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
 .title {
   display: flex;
   gap: 16px;

@@ -21,7 +21,9 @@ export const ClassInfo: FC<ClassInfoProps> = ({
 }) => {
   return (
     <div className={clsx(styles["class-info"], className)}>
-      <img src={img} alt={title} loading="lazy" />
+      <div className={styles["image"]}>
+        <img src={img} alt={title} loading="lazy" />
+      </div>
       <div className={styles["info"]}>
         <div className={styles["title"]}>
           <h4>{title}</h4>
