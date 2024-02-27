@@ -37,6 +37,7 @@ export const FlightPassengerInfo = () => {
       passengers: formValues.passengers,
       emergency: formValues.emergency,
       bags: formValues.bags,
+      flights: paramsData?.selectedFlights,
     };
     sessionStorage.setItem("bookedFlights", JSON.stringify(values));
     navigate("/flights/select-seats");

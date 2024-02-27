@@ -18,6 +18,7 @@ export const ClassInfo: FC<ClassInfoProps> = ({
   title,
   description,
   img,
+  selected,
 }) => {
   return (
     <div className={clsx(styles["class-info"], className)}>
@@ -27,9 +28,7 @@ export const ClassInfo: FC<ClassInfoProps> = ({
       <div className={styles["info"]}>
         <div className={styles["title"]}>
           <h4>{title}</h4>
-          <Badge className={clsx(styles["selected"], styles[title])}>
-            Selected
-          </Badge>
+          {selected && <Badge className={styles["selected"]}>Selected</Badge>}
         </div>
         <p className={styles["description"]}>{description}</p>
         <span className={clsx(styles["divider"], styles[title])}></span>

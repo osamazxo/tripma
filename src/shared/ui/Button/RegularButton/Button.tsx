@@ -4,7 +4,7 @@ import "./Button.scss";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "xs" | "sm" | "md" | "lg";
   variant?: "primary" | "secondary" | "tertiary";
-  state?: "active" | "disabled" | "error";
+  state?: "active" | "error";
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
 }
@@ -23,7 +23,6 @@ export const Button: FC<ButtonProps> = ({
     <button
       className={clsx("button", variant, size, state, className)}
       {...other}
-      disabled={state === "disabled"}
       type={type}
     >
       {leftIcon && <span className="button-icon">{leftIcon}</span>}

@@ -1,9 +1,14 @@
+import { usePlaneContext } from "@context/PlaneContext";
+
 export const EconomySeat = ({
   start = 0,
   xOffset = 0,
   available = true,
-  checked = false,
+  rowNumber = 0,
+  seatNumber = 0,
 }) => {
+  const { checkSeat, handleSeatSelection } = usePlaneContext();
+  const checked = checkSeat([rowNumber, seatNumber]);
   let bgColor = "#F6F6FE";
   if (available) {
     bgColor = "url(#purple-gradient)";
@@ -15,6 +20,7 @@ export const EconomySeat = ({
     <g
       className={"economy-seat" + (available && !checked ? " available" : "")}
       transform={`translate(${start + xOffset * 27} 0)`}
+      onClick={() => handleSeatSelection([rowNumber, seatNumber])}
     >
       <rect x="1117" y="976" width="22" height="32" rx="4" fill={bgColor} />
       {checked && (

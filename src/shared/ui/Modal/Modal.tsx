@@ -9,10 +9,12 @@ export const Modal: FC<ModalProps> = ({ opened, setOpened, children }) => {
   return (
     <>
       {ReactDom.createPortal(
-        <div className="modal" aria-expanded={opened}>
-          <div className="overlay" onClick={() => setOpened(false)}></div>
-          <div className="dialog">{children}</div>
-        </div>,
+        opened && (
+          <div className="modal">
+            <div className="overlay" onClick={() => setOpened(false)}></div>
+            <div className="dialog">{children}</div>
+          </div>
+        ),
         document.body
       )}
     </>

@@ -79,10 +79,16 @@
 }
 .footer {
   background-color: white;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
 }
 @media (max-width: 930px) {
   .seat-classes {
     padding-top: 70px;
+  }
+  .footer {
+    position: relative;
   }
 }
 @media (max-width: 465px) {

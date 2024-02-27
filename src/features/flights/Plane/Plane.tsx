@@ -5,11 +5,8 @@ import { BusinessRow } from "./BusinessRow";
 import "./Plane.scss";
 import { GraphicalObjects } from "./GraphicalObjects";
 import { EconomyRow } from "./EconomyRow";
-interface PlaneProps {
-  selected?: [number, number];
-  setSelected?: (selected: [number, number]) => void;
-}
-export const Plane: FC<PlaneProps> = () => {
+
+export const Plane: FC = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +73,6 @@ export const Plane: FC<PlaneProps> = () => {
               start={1078}
               yOffset={i}
               rowNumber={28 + i + 1}
-              checked={[true]}
               key={"row " + 28 + i + 1}
             />
           ))}
