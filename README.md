@@ -1,30 +1,97 @@
-# React + TypeScript + Vite
+# Tripma
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Flight booking website built on React, TypeScript, and SCSS
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Project](#running-the-project)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Expanding the ESLint configuration
+## Introduction
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Tripma is a modern flight booking website designed to provide a seamless experience for users to search and book flights. The application is built using React, TypeScript, and SCSS, ensuring a robust and maintainable codebase.
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- Flight search and booking
+- Responsive design
+- Modern UI/UX
+- Built with React and TypeScript
+- Styled with SCSS
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed on your system:
+- Node.js (>= 14.x)
+- npm (>= 6.x)
+
+### Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/rovendix/tripma.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd tripma
+    ```
+3. Install the dependencies:
+    ```sh
+    npm install
+    ```
+
+### Running the Project
+
+To start the development server, run:
+```sh
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This will launch the app and you can view it in your browser at `http://localhost:3000`.
+
+## Project Structure
+
+Here is an overview of the project's structure:
+
+```
+tripma/
+├── public/                  # Public assets
+├── src/                     # Source files
+│   ├── assets/              # Static assets like images, fonts, etc.
+│   ├── components/          # Reusable React components
+│   ├── hooks/               # Custom React hooks
+│   ├── pages/               # Page components
+│   ├── services/            # API service functions
+│   ├── styles/              # SCSS stylesheets
+│   ├── utils/               # Utility functions
+│   ├── App.tsx              # Main app component
+│   ├── index.tsx            # Entry point
+│   └── ...                  # Other files
+├── .gitignore               # Git ignore file
+├── package.json             # Project dependencies and scripts
+├── README.md                # Project documentation
+└── tsconfig.json            # TypeScript configuration
+```
+
+## Contributing
+
+Contributions are welcome! If you would like to contribute to this project, please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add new feature'`)
+5. Push to the branch (`git push origin feature-branch`)
+6. Open a pull request
+
